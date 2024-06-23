@@ -12,6 +12,8 @@ Plug 'nvie/vim-flake8'
 Plug 'ericbn/vim-solarized'
 " Autocompletion.
 Plug 'Valloric/YouCompleteMe'
+" LSP server.
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -78,4 +80,20 @@ au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
+
+
+" JSON.
+
+au BufNewFile,BufRead *.json
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+
+" LSP SERVER CONFIG.
+let g:ale_fixers = {
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'javascript': ['eslint'],
+\ 'python': ['pyright']
+\}
 
