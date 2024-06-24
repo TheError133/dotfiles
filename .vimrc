@@ -5,7 +5,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Syntax check.
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 " PEP8 check.
 Plug 'nvie/vim-flake8'
 " Solarized theme.
@@ -14,6 +14,10 @@ Plug 'ericbn/vim-solarized'
 Plug 'Valloric/YouCompleteMe'
 " LSP server.
 Plug 'dense-analysis/ale'
+" Prettier for JS + HTML.
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 call plug#end()
 
@@ -83,7 +87,6 @@ au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css
 
 
 " JSON.
-
 au BufNewFile,BufRead *.json
     \ set tabstop=2 |
     \ set softtabstop=2 |
@@ -91,9 +94,15 @@ au BufNewFile,BufRead *.json
 
 
 " LSP SERVER CONFIG.
+
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'python': ['pyright', 'mypy'],
+\}
+
+let g:ale_lint_on_text_changed = 'always'
+
 let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-\ 'javascript': ['eslint'],
-\ 'python': ['pyright']
 \}
 
