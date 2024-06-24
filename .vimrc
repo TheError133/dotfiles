@@ -93,7 +93,9 @@ au BufNewFile,BufRead *.json
     \ set shiftwidth=2
 
 
-" LSP SERVER CONFIG.
+" LSP/ALE SERVER CONFIG.
+
+" let g:ale_completion_enabled = 1
 
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
@@ -104,5 +106,6 @@ let g:ale_lint_on_text_changed = 'always'
 
 let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'javascript': ['prettier'],
 \}
 
