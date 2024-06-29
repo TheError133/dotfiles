@@ -27,6 +27,9 @@ call plug#end()
 " Line numbers.
 set nu
 
+" Disable swap-files
+set noswapfile
+
 " Syntax visualization.
 syntax on
 
@@ -108,4 +111,3 @@ let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'javascript': ['prettier'],
 \}
-
