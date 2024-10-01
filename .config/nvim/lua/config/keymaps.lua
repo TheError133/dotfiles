@@ -4,12 +4,6 @@ local opts = { silent = true, noremap = true }
 -- Select all.
 keymap.set("n", "<C-a>", "<S-g>Vgg")
 
--- Tabs.
--- keymap.set("n", "te", ":tabedit<Return>", opts)
--- keymap.set("n", "tc", ":tabclose<Return>", opts)
--- keymap.set("n", "<tab>", ":tabnext<Return>", opts)
--- keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-
 -- Buffers.
 keymap.set("n", "<tab>", ":bn<Return>", opts)
 keymap.set("n", "<s-tab>", ":bp<Return>", opts)
@@ -26,3 +20,17 @@ keymap.set("n", "sh", ":split<Return>")
 keymap.set("n", "sv", ":vsplit<Return>")
 keymap.set("n", "sq", "<C-w>q")
 keymap.set("n", "sw", "<C-w>w")
+
+-- Dap - Debugging.
+keymap.set("n", "<F5>", function()
+  require("dap").continue()
+end)
+keymap.set("n", "<F10>", function()
+  require("dap").step_over()
+end)
+keymap.set("n", "<F11>", function()
+  require("dap").step_into()
+end)
+keymap.set("n", "<F12>", function()
+  require("dap").step_out()
+end)
